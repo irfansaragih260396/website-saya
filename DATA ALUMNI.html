@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALAMAN DATA ALUMNI</title>
+    <style>
+        /* --- STYLE DASAR (Sama dengan file sebelumnya) --- */
+        :root {
+            --primary-green: #38509f;
+            --dark-green: #33691e;
+            --text-color: #333;
+            --bg-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-size: 13px; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Layout */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 3px solid var(--primary-green); }
+        .header-logo { display: flex; align-items: center; gap: 15px; }
+        .school-name h1 { color: var(--dark-green); font-size: 24px; }
+        
+        /* Navigasi */
+        nav { background-color: var(--primary-green); }
+        nav ul { display: flex; list-style: none; padding: 0 20px; }
+        nav ul li a { display: block; padding: 12px 20px; color: white; font-weight: bold; transition: 0.3s; }
+        nav ul li a:hover { background-color: var(--dark-green); }
+
+        /* Main Content */
+        .main-content { display: flex; padding: 20px; gap: 20px; align-items: flex-start; }
+        .sidebar { flex: 1; min-width: 200px; }
+        .center-content { flex: 2; }
+
+        /* Widget Sidebar */
+        .widget { margin-bottom: 20px; border: 1px solid #ddd; background: #fff; }
+        .widget-title { background: var(--primary-green); color: white; padding: 8px 15px; font-weight: bold; }
+        .menu-list li { border-bottom: 1px solid #eee; padding: 8px 15px; }
+        .menu-list li a:hover { color: var(--primary-green); }
+        footer { background: #f4f4f4; padding: 20px; border-top: 1px solid #ccc; text-align: center; }
+
+        /* --- STYLE KHUSUS HALAMAN ALUMNI --- */
+
+        /* Kotak Pencarian Alumni */
+        .search-box-alumni {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-green);
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .search-form input, .search-form select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            flex: 1;
+        }
+
+        .btn-search {
+            padding: 8px 15px;
+            background-color: var(--dark-green);
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-search:hover { background-color: var(--primary-green); }
+
+        /* Tabel Data Alumni */
+        .table-responsive {
+            overflow-x: auto; /* Agar bisa digeser di HP */
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .data-table tr:hover {
+            background-color: #e8f5e9; /* Hijau sangat muda saat hover */
+        }
+
+        /* Status Kuliah/Kerja */
+        .badge-info {
+            background: #2196F3;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+        .badge-success {
+            background: #4CAF50;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+
+        /* Form Registrasi Alumni */
+        .reg-alumni-box {
+            background: #e3f2fd;
+            border: 1px dashed #2196F3;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .btn-reg {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background: #2196F3;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <header>
+        <div class="header-logo">
+            <img src="logo siap.png" alt="Logo" width="50">
+            <div class="school-name">
+                <h1>DATA ALUMNI SEKOLAH</h1>
+                <p>SMK Yapim Pinang Awan</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="BERANDA.html">Beranda</a></li>
+            <li><a href="BERITA.html">Semua Berita</a></li>
+            <li><a href="PROFIL SEKOLAH.html">Profil Sekolah</a></li>
+            <li><a href="GALERI.html">Galeri Album</a></li>
+            <li><a href="AGENDA.html">Agenda</a></li> 
+            <li><a href="DATA ALUMNI.html">Data Alumni</a></li> 
+            <li><a href="KONTAK.html">Kontak Kami</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+
+        <aside class="sidebar">
+            <div class="widget">
+                <div class="widget-title">Alumni Per Angkatan</div>
+                <ul class="menu-list">
+                    <li><a href="#">Angkatan 2024</a></li>
+                    <li><a href="#">Angkatan 2023</a></li>
+                    <li><a href="#">Angkatan 2022</a></li>
+                    <li><a href="#">Angkatan 2021</a></li>
+                    <li><a href="#">Angkatan 2020</a></li>
+                    <li><a href="#">Lihat Arsip Lama...</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Statistik Lulusan</div>
+                <div style="padding:10px; font-size:11px;">
+                    <p><strong>Total Alumni:</strong> 12.500</p>
+                    <p><strong>Kuliah PTN:</strong> 65%</p>
+                    <p><strong>Kuliah PTS:</strong> 25%</p>
+                    <p><strong>Bekerja/Wirausaha:</strong> 10%</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="center-content">
+            <div class="widget">
+                <div class="widget-title">DIRECTORY ALUMNI</div>
+                
+                <div style="padding: 20px;">
+                    
+                    <div class="search-box-alumni">
+                        <h4 style="margin-bottom:10px;">Cari Teman Alumni</h4>
+                        <form class="search-form">
+                            <input type="text" placeholder="Nama Alumni...">
+                            <select>
+                                <option value="">- Semua Tahun -</option>
+                                <option value="2024">2024</option>
+                                <option value="2023">2023</option>
+                                <option value="2022">2022</option>
+                            </select>
+                            <button type="button" class="btn-search">Cari Data</button>
+                        </form>
+                    </div>
+
+                    <h3 style="font-size:16px; margin-bottom:10px;">Hasil Pencarian Terbaru</h3>
+                    
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th width="5%">No</th>
+                                    <th>Nama Lengkap</th>
+                                    <th width="15%">Thn Lulus</th>
+                                    <th>Status Saat Ini</th>
+                                    <th width="10%">Detail</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td><strong>Andi Pratama</strong></td>
+                                    <td>2023</td>
+                                    <td><span class="badge-info">Mahasiswa</span> UI - Hukum</td>
+                                    <td><a href="#" style="color:blue;">Lihat</a></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td><strong>Siti Aminah</strong></td>
+                                    <td>2023</td>
+                                    <td><span class="badge-info">Mahasiswa</span> UNAND - Kedokteran</td>
+                                    <td><a href="#" style="color:blue;">Lihat</a></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td><strong>Budi Santoso</strong></td>
+                                    <td>2020</td>
+                                    <td><span class="badge-success">Bekerja</span> PT. Pertamina</td>
+                                    <td><a href="#" style="color:blue;">Lihat</a></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td><strong>Rina Kartika</strong></td>
+                                    <td>2022</td>
+                                    <td><span class="badge-info">Mahasiswa</span> ITB - Informatika</td>
+                                    <td><a href="#" style="color:blue;">Lihat</a></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td><strong>Joko Widodo</strong></td>
+                                    <td>2019</td>
+                                    <td><span class="badge-success">Wirausaha</span> Kopi Kenangan</td>
+                                    <td><a href="#" style="color:blue;">Lihat</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div style="margin-top:15px; text-align:right; font-size:12px;">
+                        Halaman: <b>1</b> <a href="#">2</a> <a href="#">3</a> <a href="#">Next &raquo;</a>
+                    </div>
+
+                    <div class="reg-alumni-box">
+                        <h3>Anda Alumni SMK YAPIM PINANG AWAN?</h3>
+                        <p style="font-size:12px; margin-top:5px;">Mari bergabung dalam ikatan alumni untuk mempererat silaturahmi. Daftarkan data diri anda sekarang.</p>
+                        <a href="#" class="btn-reg">Daftar Alumni Baru</a>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <div class="widget-title">Alumni Sukses</div>
+                <div style="padding:10px; text-align:center;">
+                    <img src="Guru.jpg" style="border-radius:50%; margin-bottom:5px;" height="200" width="200">
+                    <div style="font-weight:bold; font-size:12px;">Dr. H. Fulan bin Fulan</div>
+                    <div style="font-size:10px; color:#666;">Angkatan 1990</div>
+                    <p style="font-size:11px; margin-top:5px;">"Pendidikan adalah kunci kesuksesan masa depan."</p>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Agenda Reuni</div>
+                <ul class="menu-list">
+                    <li>
+                        <div style="font-weight:bold; font-size:11px;">Reuni Akbar Angkatan 2000</div>
+                        <div style="font-size:10px; color:#888;">📅 12 Des 2025</div>
+                    </li>
+                    <li>
+                        <div style="font-weight:bold; font-size:11px;">Buka Bersama Alumni OSIS</div>
+                        <div style="font-size:10px; color:#888;">📅 Ramadhan 2025</div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Smk Yapim Pinang Awan.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

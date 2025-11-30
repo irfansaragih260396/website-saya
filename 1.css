@@ -1,0 +1,174 @@
+
+    body {
+    font-family: Arial,sans-serif ;
+    line-height: 1.6 ;
+    background-color: #dad8d8 ;
+    color: #333 ;
+}
+    
+    
+    header {
+        background-color: rgb(255, 255, 255);
+        color: rgb(17, 17, 17);
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0 auto;
+    }
+
+    .Posisi-logo {
+        max-width: 100%;
+        margin: 0 auto;
+        display: flex; 
+        align-items: center;
+        padding: 0 auto;
+    }
+
+    .logo {
+        width: 15%; 
+        height: auto;
+        margin-right: 110px;
+    }
+
+    .header-text h1 {
+        margin: 0 0 5px 0;
+        font-size: 3em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    h1:hover{
+        padding-left: 10px;
+        transition: all 0.3s ease;
+        color: rgb(206, 206, 206);
+     }
+
+    p {
+        font-size: large;
+        margin-top: 0rem;
+    }
+
+    p:hover {
+        padding-right: 10px;
+        transition: all 0.3s ease;
+    }
+
+
+    nav {
+        background: rgb(13, 59, 187);
+        padding: 0.5px;
+    }
+    
+    nav a  {
+        color: #fff;
+        text-decoration: none;
+        font-size: 20px;
+    }
+
+    nav a:hover {
+        background-color: rgb(255, 255, 255);
+        color: #323233;
+        padding: 5px;
+        padding-left: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    nav ul {
+        padding: 0;
+        list-style: none;
+        text-align: center;
+    }
+    
+    nav ul li {
+        display: inline;
+        margin-right: 50px;
+    }
+
+    main {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 50px;
+        background: #fff;
+        border-radius: 5px;
+    }
+
+    
+    
+    section {
+        padding: 10px 20px;
+        margin:5px 5px;
+        border-radius: 8px;
+        font-family: Arial, sans-serif;
+    }
+
+    #Tentang-Kami {
+        padding: 0.5rem;
+        margin-bottom: 10px;
+        background-color: #ffffff;
+        color: rgb(0, 0, 0);
+        text-align: center;
+        border:1px solid rgb(0, 0, 0);
+    }
+
+    #Layanan-Kami {
+        background-color: #838282;
+        color: rgb(66, 64, 64);
+        box-shadow: 0 4px 8px rgba(10, 10, 10, 0.932);
+    }
+
+    #Layanan-Kami ul {
+        list-style-type: none ;
+        padding: 0;
+        
+    }
+
+    h3{
+        color: #fff;
+    }
+
+    #Layanan-Kami li {
+        background-color: #ffffff;
+        padding: 10px;
+        margin-bottom: 8px;
+        border-radius: 4px;
+        padding-left: 10px;
+        transition: all 0.3s ease;
+    }
+    
+    
+    
+    #Layanan-Kami li:hover {
+        background-color: #a1fffa;
+        border-radius: 4px;
+        padding-left: 10px;
+        transition: all 0.3s ease;
+    }
+
+    #Layanan-Kami button {
+        background-color: #ff4040;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+        font-size: large;
+    }
+
+
+
+    responsive-image {
+        max-width: auto;
+        height: auto;
+        border-radius: 5px;
+    }
+    
+    footer {
+        text-align: center;
+        color: #fff;
+        padding: 5px;
+        background: #333;
+        transition: ease;
+        padding-bottom: 0%;
+    }

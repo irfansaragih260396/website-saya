@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Album Galeri </title>
+    <style>
+        /* --- STYLE DASAR (Sama seperti index.html) --- */
+        :root {
+            --primary-green: #991c22;
+            --dark-green: #111110;
+            --text-color: #333;
+            --bg-color: #e0e0e0;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-size: 13px; }
+        a { text-decoration: none; color: inherit; }
+        
+        /* Container & Layout */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 3px solid var(--primary-green); }
+        .header-logo { display: flex; align-items: center; gap: 15px; }
+        .school-name h1 { color: var(--dark-green); font-size: 24px; }
+        
+        /* Navigasi */
+        nav { background-color: var(--primary-green); }
+        nav ul { display: flex; list-style: none; padding: 0 20px; }
+        nav ul li a { display: block; padding: 12px 20px; color: white; font-weight: bold; transition: 0.3s; }
+        nav ul li a:hover { background-color: var(--dark-green); }
+
+        /* Main Content Layout */
+        .main-content { display: flex; padding: 20px; gap: 20px; align-items: flex-start; }
+        .sidebar { flex: 1; min-width: 200px; }
+        .center-content { flex: 2; }
+
+        /* Widget Sidebar Styles */
+        .widget { margin-bottom: 20px; border: 1px solid #ddd; background: #fff; }
+        .widget-title { background: var(--primary-green); color: white; padding: 8px 15px; font-weight: bold; }
+        .menu-list li { border-bottom: 1px solid #eee; padding: 8px 15px; }
+        .menu-list li a:hover { color: var(--primary-green); }
+        footer { background: #f4f4f4; padding: 20px; border-top: 1px solid #ccc; text-align: center; }
+
+        /* --- STYLE KHUSUS HALAMAN GALLERY --- */
+        
+        /* Grid System untuk Galeri */
+        .album-grid {
+            display: grid;
+            /* Membuat kolom otomatis menyesuaikan lebar (minimal 200px) */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+            gap: 15px;
+        }
+
+        /* Kartu Foto */
+        .album-card {
+            border: 1px solid #ddd;
+            background: #fff;
+            transition: transform 0.2s ease;
+            overflow: hidden;
+        }
+
+        .album-card:hover {
+            transform: translateY(-5px); /* Efek naik sedikit saat di-hover */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-green);
+        }
+
+        .album-img-wrapper {
+            width: 100%;
+            height: 150px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .album-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .album-card:hover .album-img-wrapper img {
+            transform: scale(1.1); /* Efek zoom gambar saat hover */
+        }
+
+        .album-info {
+            padding: 10px;
+        }
+
+        .album-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--dark-green);
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .album-date {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .album-desc {
+            font-size: 11px;
+            line-height: 1.4;
+            color: #555;
+        }
+
+        /* Tombol halaman (Pagination) */
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination a {
+            display: inline-block;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            margin: 0 2px;
+            background: #fff;
+        }
+        .pagination a.active {
+            background: var(--primary-green);
+            color: white;
+            border-color: var(--primary-green);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <header>
+        <div class="header-logo">
+            <img src="logo siap.png" alt="Logo" width="50">
+            <div class="school-name">
+                <h1>ALBUM GALERI</h1>
+                <p>Sekolah SMK Yapim Pinan Awan</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="BERANDA.html">Beranda</a></li>
+            <li><a href="BERITA.html">Semua Berita</a></li>
+            <li><a href="PROFIL SEKOLAH.html">Profil Sekolah</a></li>
+            <li><a href="GALERI.html">Album Galeri</a>
+            <li><a href="AGENDA.html">Agenda</a>
+            <li><a href="DATA ALUMNI.html">Data Alumni</a>
+            </li> <li><a href="KONTAK.html">Kontak Kami</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+
+        <aside class="sidebar">
+            <div class="widget">
+                <div class="widget-title">Kategori Album</div>
+                <ul class="menu-list">
+                    <li><a href="#">Kegiatan Sekolah</a></li>
+                    <li><a href="#">Ekstrakurikuler</a></li>
+                    <li><a href="#">Prestasi Siswa</a></li>
+                    <li><a href="#">Fasilitas</a></li>
+                    <li><a href="#">Guru & Staf</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <main class="center-content">
+            <div class="widget">
+                <div class="widget-title">GALERI KEGIATAN SEKOLAH</div>
+                
+                <div style="padding: 15px;">
+                    <div class="album-grid">
+                        
+                        <div class="album-card">
+                            <div class="album-img-wrapper">
+                                <img src="a4.jpg" alt="Upacara">
+                            </div>
+                            <div class="album-info">
+                                <span class="album-title">Upacara Bendera Senin</span>
+                                <span class="album-date">📅 25 Nov 2024</span>
+                                <p class="album-desc">Pelaksanaan upacara bendera yang khidmat diikuti seluruh warga sekolah.</p>
+                            </div>
+                        </div>
+
+                        <div class="album-card">
+                            <div class="album-img-wrapper">
+                                <img src="https://placehold.co/400x300?text=Pramuka" alt="Pramuka">
+                            </div>
+                            <div class="album-info">
+                                <span class="album-title">Perkemahan Sabtu Minggu</span>
+                                <span class="album-date">📅 20 Nov 2024</span>
+                                <p class="album-desc">Kegiatan Persami untuk melatih kemandirian siswa kelas X.</p>
+                            </div>
+                        </div>
+
+                        <div class="album-card">
+                            <div class="album-img-wrapper">
+                                <img src="https://placehold.co/400x300?text=Laboratorium" alt="Lab">
+                            </div>
+                            <div class="album-info">
+                                <span class="album-title">Praktikum Kimia</span>
+                                <span class="album-date">📅 18 Nov 2024</span>
+                                <p class="album-desc">Siswa sedang melakukan uji coba larutan asam basa di laboratorium.</p>
+                            </div>
+                        </div>
+
+                        <div class="album-card">
+                            <div class="album-img-wrapper">
+                                <img src="https://placehold.co/400x300?text=Futsal" alt="Futsal">
+                            </div>
+                            <div class="album-info">
+                                <span class="album-title">Juara 1 Futsal Kota</span>
+                                <span class="album-date">📅 10 Nov 2024</span>
+                                <p class="album-desc">Tim Futsal sekolah berhasil membawa pulang piala walikota.</p>
+                            </div>
+                        </div>
+
+                        <div class="album-card">
+                            <div class="album-img-wrapper">
+                                <img src="https://placehold.co/400x300?text=Rapat+Guru" alt="Rapat">
+                            </div>
+                            <div class="album-info">
+                                <span class="album-title">Rapat Evaluasi Guru</span>
+                                <span class="album-date">📅 01 Nov 2024</span>
+                                <p class="album-desc">Pembahasan kurikulum baru untuk semester depan.</p>
+                            </div>
+                        </div>
+
+                        <div class="album-card">
+                            <div class="album-img-wrapper">
+                                <img src="https://placehold.co/400x300?text=Perpustakaan" alt="Library">
+                            </div>
+                            <div class="album-info">
+                                <span class="album-title">Kunjungan Perpustakaan</span>
+                                <span class="album-date">📅 28 Okt 2024</span>
+                                <p class="album-desc">Gerakan literasi sekolah, membaca 15 menit sebelum masuk.</p>
+                            </div>
+                        </div>
+
+                    </div> <div class="pagination">
+                        <a href="#">&laquo;</a>
+                        <a href="#" class="active">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">&raquo;</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <div class="widget-title">Video Terbaru</div>
+                <div style="padding:10px; text-align:center;">
+                    <img src="https://placehold.co/200x120?text=Video+Thumbnail" style="width:100%;">
+                    <p style="font-size:11px; margin-top:5px;">Profil Sekolah 2025</p>
+                </div>
+            </div>
+            
+            <div class="widget">
+                <div class="widget-title">Populer Gallery</div>
+                <ul class="menu-list">
+                    <li><a href="#">Foto Wisuda 2023</a></li>
+                    <li><a href="#">HUT Sekolah ke-50</a></li>
+                    <li><a href="#">Study Tour Jakarta</a></li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 SMK YAPIM PINANG AWAN.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

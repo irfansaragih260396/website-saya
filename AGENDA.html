@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGENDA KEGIATAN</title>
+    <style>
+        /* --- STYLE DASAR (Sama seperti sebelumnya) --- */
+        :root {
+            --primary-green: #0d7545;
+            --dark-green: #373f41;
+            --text-color: #333;
+            --bg-color: #e0e0e0;
+            --accent-color: #f57f17; /* Warna oranye untuk highlight */
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); font-size: 13px; }
+        a { text-decoration: none; color: inherit; }
+
+        /* Layout Utama */
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; background: #fff; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; border-bottom: 3px solid var(--primary-green); }
+        .header-logo { display: flex; align-items: center; gap: 15px; }
+        .school-name h1 { color: var(--dark-green); font-size: 24px; }
+
+        /* Navigasi */
+        nav { background-color: var(--primary-green); }
+        nav ul { display: flex; list-style: none; padding: 0 20px; }
+        nav ul li a { display: block; padding: 12px 20px; color: white; font-weight: bold; transition: 0.3s; }
+        nav ul li a:hover { background-color: var(--dark-green); }
+
+        /* Kolom Layout */
+        .main-content { display: flex; padding: 20px; gap: 20px; align-items: flex-start; }
+        .sidebar { flex: 1; min-width: 200px; }
+        .center-content { flex: 2; }
+
+        /* Widget */
+        .widget { margin-bottom: 20px; border: 1px solid #ddd; background: #fff; }
+        .widget-title { background: var(--primary-green); color: white; padding: 8px 15px; font-weight: bold; }
+        .menu-list li { border-bottom: 1px solid #eee; padding: 8px 15px; }
+        .menu-list li a:hover { color: var(--primary-green); }
+        footer { background: #f4f4f4; padding: 20px; border-top: 1px solid #ccc; text-align: center; }
+
+        /* --- STYLE KHUSUS HALAMAN AGENDA --- */
+
+        .agenda-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Kartu Agenda */
+        .agenda-item {
+            display: flex;
+            background: #fff;
+            border: 1px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .agenda-item:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-color: var(--primary-green);
+        }
+
+        /* Kotak Tanggal di Kiri */
+        .agenda-date-box {
+            background-color: var(--primary-green);
+            color: white;
+            width: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .agenda-day {
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .agenda-month {
+            font-size: 12px;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .agenda-year {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+
+        /* Detail Agenda di Kanan */
+        .agenda-details {
+            padding: 15px;
+            flex: 1;
+        }
+
+        .agenda-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--dark-green);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .agenda-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #eee;
+            padding-bottom: 5px;
+        }
+
+        .agenda-desc {
+            font-size: 12px;
+            color: #444;
+            line-height: 1.4;
+        }
+
+        /* Status Label (Misal: Akan Datang / Selesai) */
+        .status-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+        }
+        .status-upcoming { background-color: var(--accent-color); }
+        .status-done { background-color: #999; }
+
+        /* Tombol download kalender */
+        .btn-calendar {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: var(--dark-green);
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .btn-calendar:hover { opacity: 0.9; }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <header>
+        <div class="header-logo">
+            <img src="logo siap.png" alt="Logo" width="50">
+            <div class="school-name">
+                <h1>DAFTAR AGENDA SEKOLAH</h1>
+                <p>Smk Yapim Pinang Awan</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="BERANDA.html">Beranda</a></li>
+            <li><a href="BERITA.html">Semua Berita</a></li>
+            <li><a href="PROFIL SEKOLAH.html">Profil Sekolah</a></li>
+            <li><a href="GALERI.html">Galeri Album</a></li>
+            <li><a href="AGENDA.html">Agenda</a></li>
+            <li><a href="DATA ALUMNI.html">Data Alumni</a></li>
+            <li><a href="KONTAK.html">Kontak Kami</a></li> 
+        </ul>
+    </nav>
+
+    <div class="main-content">
+
+        <aside class="sidebar">
+            <div class="widget">
+                <div class="widget-title">Filter Agenda</div>
+                <ul class="menu-list">
+                    <li><a href="#">Bulan Ini</a></li>
+                    <li><a href="#">Bulan Depan</a></li>
+                    <li><a href="#">Akademik</a></li>
+                    <li><a href="#">Non-Akademik</a></li>
+                    <li><a href="#">Libur Nasional</a></li>
+                </ul>
+            </div>
+            
+            <div class="widget">
+                <div class="widget-title">Info Singkat</div>
+                <div style="padding:10px; font-size:11px;">
+                    <p>Jangan lupa untuk selalu mengecek jadwal ujian semester di halaman ini.</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="center-content">
+            <div class="widget">
+                <div class="widget-title">AGENDA KEGIATAN SEKOLAH</div>
+                
+                <div style="padding: 20px;">
+                    
+                    <div class="agenda-list">
+                        
+                        <div class="agenda-item">
+                            <div class="agenda-date-box">
+                                <span class="agenda-day">15</span>
+                                <span class="agenda-month">DES</span>
+                                <span class="agenda-year">2025</span>
+                            </div>
+                            <div class="agenda-details">
+                                <span class="status-badge status-upcoming">Akan Datang</span>
+                                <span class="agenda-title">Pembagian Raport Semester Ganjil</span>
+                                <div class="agenda-meta">
+                                    <span>🕒 08:00 - 12:00 WIB</span>
+                                    <span>📍 Ruang Kelas Masing-masing</span>
+                                </div>
+                                <p class="agenda-desc">Orang tua / Wali murid diharapkan hadir tepat waktu untuk pengambilan hasil belajar siswa.</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-date-box">
+                                <span class="agenda-day">02</span>
+                                <span class="agenda-month">DES</span>
+                                <span class="agenda-year">2025</span>
+                            </div>
+                            <div class="agenda-details">
+                                <span class="status-badge status-upcoming">Akan Datang</span>
+                                <span class="agenda-title">Ujian Akhir Semester (UAS)</span>
+                                <div class="agenda-meta">
+                                    <span>🕒 07:30 - Selesai</span>
+                                    <span>📍 Lingkungan Sekolah</span>
+                                </div>
+                                <p class="agenda-desc">Pelaksanaan UAS berbasis komputer. Siswa diharapkan membawa kartu ujian.</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-date-box">
+                                <span class="agenda-day">25</span>
+                                <span class="agenda-month">NOV</span>
+                                <span class="agenda-year">2025</span>
+                            </div>
+                            <div class="agenda-details">
+                                <span class="status-badge status-done">Selesai</span>
+                                <span class="agenda-title">Peringatan Hari Guru Nasional</span>
+                                <div class="agenda-meta">
+                                    <span>🕒 07:00 - 10:00 WIB</span>
+                                    <span>📍 Lapangan Utama</span>
+                                </div>
+                                <p class="agenda-desc">Upacara bendera dan potong tumpeng bersama seluruh guru dan staf.</p>
+                            </div>
+                        </div>
+
+                        <div class="agenda-item">
+                            <div class="agenda-date-box">
+                                <span class="agenda-day">10</span>
+                                <span class="agenda-month">NOV</span>
+                                <span class="agenda-year">2025</span>
+                            </div>
+                            <div class="agenda-details">
+                                <span class="status-badge status-done">Selesai</span>
+                                <span class="agenda-title">Lomba Kebersihan Kelas</span>
+                                <div class="agenda-meta">
+                                    <span>🕒 Sepanjang Hari</span>
+                                    <span>📍 Seluruh Kelas</span>
+                                </div>
+                                <p class="agenda-desc">Penilaian kebersihan dan keindahan kelas dalam rangka bulan bahasa.</p>
+                            </div>
+                        </div>
+
+                    </div> <a href="#" class="btn-calendar">📅 Download Kalender Pendidikan (PDF)</a>
+
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar">
+            <div class="widget">
+                <div class="widget-title">Pengumuman Terkait</div>
+                <ul class="menu-list">
+                    <li><a href="#">Tata Tertib UAS</a></li>
+                    <li><a href="#">Jadwal Remedial</a></li>
+                    <li><a href="#">Syarat Pengambilan Raport</a></li>
+                </ul>
+            </div>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; SMK YAPIM PINANG AWAN.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>

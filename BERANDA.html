@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HALAMAN BERANDA</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-green: #597fb8; /* Hijau header */
+            --dark-green: #424241;    /* Hijau navigasi */
+            --light-bg: #f4f4f4;
+            --border-color: #ddd;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            color: var(--text-color);
+            font-size: 13px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* --- CONTAINER UTAMA --- */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* --- HEADER --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: #fff;
+            border-bottom: 3px solid var(--primary-green);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-logo img {
+            width: 110px;
+            height: auto;
+        }
+
+        .school-name h1 {
+            color: var(--dark-green);
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+
+        .school-name p {
+            color: #666;
+            font-size: 15px;
+        }
+
+        .header-banner img {
+            height: 70px; /* Simulasi gambar siswa di header */
+            object-fit: cover;
+            width: 100px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background-color: var(--primary-green);
+            color: white;
+        }
+
+        nav ul {
+            display: flex;
+            padding: 0 20px;
+        }
+
+        nav ul li a {
+            display: block;
+            padding: 12px 20px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--dark-green);
+        }
+
+        /* --- MAIN LAYOUT (3 KOLOM) --- */
+        .main-content {
+            display: flex;
+            padding: 20px;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        /* Sidebar Kiri & Kanan */
+        .sidebar {
+            flex: 1; /* Lebar sekitar 20-25% */
+            min-width: 200px;
+        }
+
+        /* Konten Tengah */
+        .center-content {
+            flex: 2; /* Lebar sekitar 50% */
+        }
+
+        /* --- WIDGET & SECTION STYLES --- */
+        .widget {
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            background: #fff;
+        }
+
+        .widget-title {
+            background: var(--primary-green); /* Hijau muda sesuai gambar */
+            color: white;
+            padding: 8px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            border-bottom: 1px solid var(--dark-green);
+        }
+
+        /* Menu List Style (Sidebar Kiri) */
+        .menu-list li {
+            border-bottom: 1px solid #eee;
+        }
+
+        .menu-list li a {
+            display: block;
+            padding: 8px 15px;
+            color: #444;
+            font-size: 12px;
+            background: #f9f9f9;
+        }
+
+        .menu-list li a:hover {
+            background: #eee;
+            color: var(--dark-green);
+        }
+
+        .menu-list li::before {
+            content: "•";
+            color: var(--primary-green);
+            margin-right: 5px;
+            margin-left: 5px;
+        }
+
+        /* --- SLIDER (Center) --- */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background: #ccc;
+        }
+        
+        .slider-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none; /* JS akan mengubah ini */
+        }
+        
+        .slider-caption {
+            position: absolute;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            width: 100%;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        /* --- PENGUMUMAN --- */
+        .announcement-box {
+            background-color: #eee;
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .announcement-list li {
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+
+        .announcement-title {
+            font-weight: bold;
+            color: #d32f2f; /* Merah untuk penting */
+            display: block;
+        }
+
+        /* --- BERITA UTAMA & TERBARU --- */
+        .news-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+
+        .news-thumb {
+            width: 100px;
+            height: 70px;
+            background: #ddd;
+            object-fit: cover;
+        }
+
+        .news-content h3 {
+            font-size: 14px;
+            color: #b71c1c; /* Warna judul berita merah bata */
+            margin-bottom: 5px;
+        }
+
+        .news-meta {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .news-snippet {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        /* --- RIGHT SIDEBAR SPECIFICS --- */
+        .kepsek-photo {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            padding: 3px;
+        }
+        
+        .kepsek-name {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .polling-options input {
+            margin-right: 5px;
+        }
+        
+        .polling-options label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .btn-poll {
+            margin-top: 5px;
+            padding: 5px 10px;
+            background: #ddd;
+            border: 1px solid #999;
+            cursor: pointer;
+            font-size: 11px;
+        }
+
+        /* --- GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        .gallery-grid img {
+            width: 100%;
+            height: 80px;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            padding: 2px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #f4f4f4;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+            text-align: left;
+            font-size: 11px;
+            color: #666;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            .sidebar, .center-content {
+                width: 100%;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <div class="header-logo">
+            <img src="logo siap.png" alt="Logo" 
+            width="50">
+            <div class="school-name">
+                <h1>SMK YAPIM PINANG AWAN</h1>
+                <p>Jl.Besar Pinang Awan, Kota Cikampak, Provinsi Sumatera Utara<br>Telp. (0751) 461692</p>
+            </div>
+        </div>
+        <div class="header-banner">
+            <img src="LOGO METRON.png" alt="Banner Siswa">
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="BERANDA.html">Beranda</a></li>
+            <li><a href="BERITA.html">Semua Berita</a></li>
+            <li><a href="PROFIL SEKOLAH.html">Profil Sekolah</a></li>
+            <li><a href="GALERI.html">Galeri album</a></li>
+            <li><a href="AGENDA.html">Agenda</a></li>
+            <li><a href="DATA ALUMNI.html">Data Alumni</a></li>
+            <li><a href="KONTAK.html">Kontak Kami</a></li>
+        </ul>
+    </nav>
+
+    <div class="main-content">
+
+        <aside class="sidebar left-sidebar">
+            <div class="widget">
+                <div class="widget-title">Profile Sekolah</div>
+                <ul class="menu-list">
+                    <li><a href="PROFIL SEKOLAH.html">Sejarah</a></li>
+                    <li><a href="#Profil">Visi dan Misi</a></li>
+                    <li><a href="#">Program Sekolah</a></li>
+                    <li><a href="#">Prestasi Sekolah</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Sarana Dan Prasarana</div>
+                <ul class="menu-list">
+                    <li><a href="#">Lapangan Parkir</a></li>
+                    <li><a href="#">Lapangan Olahraga</a></li>
+                    <li><a href="#">Ruang Kelas</a></li>
+                    <li><a href="#">Laboratorium</a></li>
+                    <li><a href="#">Perpustakaan</a></li>
+                    <li><a href="#">Ruang UKS</a></li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Kalender Pendidikan</div>
+                <div style="padding: 10px; font-size: 11px;">
+                    <p style="margin-bottom:10px;"><strong>11 s.d 16 Maret 2025</strong><br>Ujian Tengah Semester Genap.</p>
+                    <p style="border-top:1px dashed #ccc; padding-top:5px;"><strong>01 s.d 05 April 2025</strong><br>Libur Awal Ramadhan.</p>
+                </div>
+            </div>
+        </aside>
+
+        <main class="center-content">
+            <div class="slider-container">
+                <img class="slider-image" src="Guru.jpg" style="display:block;">
+                <img class="slider-image" src="Kelas Industri.jpg">
+                <img class="slider-image" src="a14.jpg">
+                <img class="slider-image" src="a4.jpg">
+                <div class="slider-caption">Guru-guru SMK Yapim Pinang Awan & Kegiatan Kelas Industri TKJ</div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title" style="background:rgb(82, 80, 80);">PENGUMUMAN</div>
+                <div class="announcement-box">
+                    <ul class="announcement-list">
+                        <li>
+                            <span class="announcement-title">1. Libur Lebaran Natal dan Tahun Baru 2026</span>
+                            <small>Silahkan download file ini: Tidak Ada File</small>
+                        </li>
+                        <li>
+                            <span class="announcement-title">2. Penerimaan Peserta Didik Baru (PPDB)</span>
+                            <small>Silahkan download file ini: <a href="#">Contoh File.txt</a></small>
+                        </li>
+                    </ul>
+                    <button style="width:100%; padding:5px;">Lihat Semua Pengumuman <a href="BERITA.html"</button>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">BERITA UTAMA</div>
+                <div style="padding: 15px;">
+                    <article class="news-item">
+                        <img src="Kelas Industri.jpg" class="news-thumb" alt="News">
+                        <div class="news-content">
+                            <h3>PEMBUKAAN KELAS INDUSTRI JURUSAN TKJ YAPIM PINANG AWAN</h3>
+                            <div class="news-meta">📅 10:09:05, 11 Nov 2024 | Oleh: Admin</div>
+                            <p class="news-snippet">Aneka komentar di Twitter tidak pernah dimasukkan ke hati oleh siswa berprestasi ini...</p>
+                        </div>
+                    </article>
+                    <article class="news-item">
+                        <img src="a4.jpg" class="news-thumb" alt="News">
+                        <div class="news-content">
+                            <h3>UPACARA MEMPERINGATI HARI GURU</h3>
+                            <div class="news-meta">📅 08:00:19, 25 Nov 2025 | Oleh: Admin</div>
+                            <p class="news-snippet">Kelangsungan karier siswa tidak lepas dari dukungan penuh orang tua di rumah...</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title" style="background:orange;">ALBUM GALLERY SEKOLAH</div>
+                <div class="gallery-grid" style="padding:10px;">
+                    <img src="gedung 1.JPG" alt="Galeri">
+                    <img src="gedung 2.JPG" alt="Galeri">
+                    <img src="gedung 3.JPG" alt="Galeri">
+                    <img src="gedung 1.JPG" alt="Galeri">
+                    <img src="gedung 2.JPG" alt="Galeri">
+                    <img src="gedung 3.JPG" alt="Galeri">
+                </div>
+            </div>
+        </main>
+
+        <aside class="sidebar right-sidebar">
+            <div class="widget">
+                <div class="widget-title">Kepala Sekolah</div>
+                <div style="padding: 10px; text-align: center;">
+                    <img src="kepsek.jpg" class="kepsek-photo" alt="Kepsek">
+                    <div class="kepsek-name">Lasny Pernice Sianturi, Spd</div>
+                    <div style="font-size:11px; margin-top:5px;">Kepala Sekolah SMK Yapim Pinang Awan</div>
+                    <a href="#" style="color:red; font-size:11px;">Baca Sambutan</a>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Berita Terbaru</div>
+                <ul class="menu-list">
+                    <li>
+                        <div style="font-weight:bold; font-size:11px;"></div>
+                        <div style="font-size:10px; color:#888;">📅 11 Nov 2024</div>
+                    </li>
+                    <li>
+                        <div style="font-weight:bold; font-size:11px;">Dukungan Orangtua Bagi...</div>
+                        <div style="font-size:10px; color:#888;">📅 11 Nov 2024</div>
+                    </li>
+                    <li>
+                        <div style="font-weight:bold; font-size:11px;">Juara Lomba Matematika</div>
+                        <div style="font-size:10px; color:#888;">📅 10 Nov 2024</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Jejak Pendapat</div>
+                <div style="padding: 10px;">
+                    <p style="font-size:12px; margin-bottom:10px; font-weight:bold;">Siapakah Calon Ketua OSIS Favorit Anda?</p>
+                    <div class="polling-options">
+                        <label><input type="radio" name="osis"> Budi Santoso</label>
+                        <label><input type="radio" name="osis"> Siti Aminah</label>
+                        <label><input type="radio" name="osis"> Rio Pratama</label>
+                        <label><input type="radio" name="osis"> Dewi Sartika</label>
+                    </div>
+                    <button class="btn-poll">PILIH</button>
+                    <button class="btn-poll">LIHAT HASIL</button>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Link Terkait</div>
+                <ul class="menu-list">
+                    <li><a href="#">Dinas Pendidikan</a></li>
+                    <li><a href="#">Kemdikbud</a></li>
+                    <li><a href="#">Universitas Andalas</a></li>
+                    <li><a href="#">Universitas Negeri Padang</a></li>
+                </ul>
+            </div>
+        </aside>
+
+    </div> <footer>
+        <p>&copy; 2025 Copyright SMK YAPIM PINANG AWAN. All Rights Reserved.</p>
+        <p>Develop by: Tim IT Sekolah - Redesign by: Siswa TKJ</p>
+    </footer>
+
+</div> <script>
+    // Script Sederhana untuk Slider Otomatis
+    let slideIndex = 0;
+    const slides = document.querySelectorAll(".slider-image");
+    
+    function showSlides() {
+        // Sembunyikan semua gambar
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        
+        slideIndex++;
+        
+        // Reset ke gambar pertama jika sudah habis
+        if (slideIndex > slides.length) { slideIndex = 1 }    
+        
+        // Tampilkan gambar saat ini
+        slides[slideIndex - 1].style.display = "block";  
+        
+        // Ulangi setiap 3 detik
+        setTimeout(showSlides, 3000); 
+    }
+
+    // Jalankan fungsi slider saat halaman dimuat
+    if(slides.length > 0) {
+        showSlides();
+    }
+</script>
+
+</body>
+</html>
